@@ -21,7 +21,11 @@ class ResticCollector(object):
         # todo: cold start -> the stats cache could be saved in a persistent volume
         # todo: cold start -> the restic cache (/root/.cache/restic) could be saved in a persistent volume
         self.stats_cache = {}
-        self.metrics = {}
+        self.metrics = {
+            "check_success": 0,
+            "snapshots_total": 0,
+            "clients": [],
+        }
         self.refresh()
 
     def collect(self):
